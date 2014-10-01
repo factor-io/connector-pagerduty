@@ -3,7 +3,7 @@ $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
 Gem::Specification.new do |s|
   s.name          = 'factor-connector-pushover'
-  s.version       = '0.0.2'
+  s.version       = '0.0.3'
   s.platform      = Gem::Platform::RUBY
   s.authors       = ['Maciej Skierkowski']
   s.email         = ['maciej@factor.io']
@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   
   s.require_paths = ['lib']
 
-  s.add_runtime_dependency 'factor-connector-api', '~> 0.0.1'
-  s.add_runtime_dependency 'rest-client', '1.6.7'
+  s.add_runtime_dependency 'factor-connector-api', '~> 0.0.3'
+  s.add_runtime_dependency 'rest-client', '~> 1.7.2'
 end
