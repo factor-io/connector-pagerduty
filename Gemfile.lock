@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    factor-connector-pushover (0.0.3)
+    factor-connector-pagerduty (0.0.1)
       factor-connector-api (~> 0.0.3)
       pagerduty (~> 2.0.0)
 
@@ -23,4 +23,4 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  factor-connector-pushover!
+  factor-connector-pagerduty!

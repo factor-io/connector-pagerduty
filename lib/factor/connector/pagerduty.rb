@@ -10,10 +10,6 @@ Factor::Connector.service 'pagerduty' do
     fail 'Description is required' unless description
     fail 'A service key must be provided' unless service_key
 
-    content = {
-      description: description
-    }
-
     info 'Beginning authentication'
     begin
       service = Pagerduty.new(service_key)
@@ -21,9 +17,9 @@ Factor::Connector.service 'pagerduty' do
       fail 'Authentication failed'
     end
 
-    info 'Generating an incident'
+    info 'Generating a new incident'
     begin
-      response = service.trigger(content)
+      response = service.trigger(description)
     rescue
       fail 'Failed to send incident'
     end
