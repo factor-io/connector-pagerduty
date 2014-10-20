@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/factor-io/connector-pagerduty.svg?branch=master)](https://travis-ci.org/factor-io/connector-pagerduty)
+
 PagerDuty Connector for Factor.io
 ======================
 
