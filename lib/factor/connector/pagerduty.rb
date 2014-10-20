@@ -22,11 +22,11 @@ Factor::Connector.service 'pagerduty' do
     info 'Generating a new incident'
     begin
       service = Pagerduty.new(service_key)
-      response = service.trigger(description, content)
+      incident = service.trigger(description, content)
     rescue
       fail 'Failed to send incident'
     end
-    action_callback response
+    action_callback incident
   end
 
   action 'retrieve-incident' do |params|
@@ -40,7 +40,26 @@ Factor::Connector.service 'pagerduty' do
     info 'Retrieving the incident information'
     begin
       service = Pagerduty.new(service_key)
-      response = service.get_incident(incident_key)
+      incident = service.get_incident(incident_key)
+    rescue
+      fail 'Failed to find the incident'
+    end
+    action_callback incident
+  end
+
+  action 'acknowledge-incident' do |params|
+
+    service_key = params['service_key']
+    incident_key = params['incident_key']
+
+    fail 'A service key must be provided' unless service_key
+    fail 'An incident key is required' unless incident_key
+
+    info 'Retrieving the incident information'
+    begin
+      service = Pagerduty.new(service_key)
+      incident = service.get_incident(incident_key)
+      response = incident.acknowledge
     rescue
       fail 'Failed to find the incident'
     end
