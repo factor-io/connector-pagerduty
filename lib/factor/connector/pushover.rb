@@ -1,32 +1,31 @@
 require 'factor-connector-api'
-require 'restclient'
+require 'pagerduty'
 
-Factor::Connector.service 'pushover' do
-  action 'notify' do |params|
-    message = params['message']
-    title   = params['title'] || 'Factor.io'
-    user    = params['user']
-    token   = params['api_key']
+Factor::Connector.service 'pagerduty' do
+  action 'incident' do |params|
 
-    fail 'Message is required' unless message
-    fail 'Title cant be empty' if title.empty?
-    fail 'User is required' unless user
-    fail 'API Key is required' unless token
+    service_key = params['service_key']
+    description = params['description']
 
-    contents = {
-      message: message,
-      title: title,
-      user: user,
-      token: token
+    fail 'Description is required' unless description
+    fail 'A service key must be provided' unless service_key
+
+    content = {
+      description: description
     }
 
-    info "Sending message '#{title}: #{message}'"
+    info 'Beginning authentication'
     begin
-      uri = 'https://api.pushover.net/1/messages.json'
-      raw_response = RestClient.post(uri, contents)
-      response = JSON.parse(raw_response)
+      service = Pagerduty.new(service_key)
     rescue
-      fail 'Failed to send message'
+      fail 'Authentication failed'
+    end
+
+    info 'Generating an incident'
+    begin
+      response = service.trigger(content)
+    rescue
+      fail 'Failed to send incident'
     end
     action_callback response
   end

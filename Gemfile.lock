@@ -1,17 +1,23 @@
 PATH
   remote: .
   specs:
-    factor-connector-pushover (0.0.1)
-      factor-connector-api (~> 0.0.1)
-      rest-client (= 1.6.7)
+    factor-connector-pushover (0.0.3)
+      factor-connector-api (~> 0.0.3)
+      pagerduty (~> 2.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    factor-connector-api (0.0.1)
-    mime-types (2.3)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
+    celluloid (0.16.0)
+      timers (~> 4.0.0)
+    factor-connector-api (0.0.13)
+      celluloid (~> 0.16.0)
+    hitimes (1.2.2)
+    json (1.8.1)
+    pagerduty (2.0.0)
+      json (>= 1.7.7)
+    timers (4.0.1)
+      hitimes
 
 PLATFORMS
   ruby
