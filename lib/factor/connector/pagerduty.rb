@@ -2,7 +2,7 @@ require 'factor-connector-api'
 require 'pagerduty'
 
 Factor::Connector.service 'pagerduty' do
-  action 'incident' do |params|
+  action 'create' do |params|
 
     service_key = params['service_key']
     description = params['description']
@@ -29,7 +29,7 @@ Factor::Connector.service 'pagerduty' do
     action_callback incident
   end
 
-  action 'retrieve-incident' do |params|
+  action 'retrieve' do |params|
 
     service_key = params['service_key']
     incident_key = params['incident_key']
@@ -47,7 +47,7 @@ Factor::Connector.service 'pagerduty' do
     action_callback incident
   end
 
-  action 'acknowledge-incident' do |params|
+  action 'acknowledge' do |params|
 
     service_key = params['service_key']
     incident_key = params['incident_key']
@@ -66,7 +66,7 @@ Factor::Connector.service 'pagerduty' do
     action_callback response
   end
 
-  action 'resolve-incident' do |params|
+  action 'resolve' do |params|
 
     service_key = params['service_key']
     incident_key = params['incident_key']

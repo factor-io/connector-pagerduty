@@ -20,7 +20,7 @@ describe 'PagerDuty' do
         'client_url' => client_url
       }
 
-      service_instance.test_action('incident', params) do
+      service_instance.test_action('create', params) do
         expect_info message: 'Generating a new incident'
         expect_return
       end
@@ -38,7 +38,7 @@ describe 'PagerDuty' do
         'incident_key' => incident_key
       }
 
-      service_instance.test_action('retrieve-incident', params) do
+      service_instance.test_action('retrieve', params) do
         expect_info message: 'Retrieving the incident information'
         expect_return
       end
@@ -56,7 +56,7 @@ describe 'PagerDuty' do
         'incident_key' => incident_key
       }
 
-      service_instance.test_action('acknowledge-incident', params) do
+      service_instance.test_action('acknowledge', params) do
         expect_info message: 'Acknowleding the incident'
         expect_return
       end
@@ -74,7 +74,7 @@ describe 'PagerDuty' do
         'incident_key' => incident_key
       }
 
-      service_instance.test_action('resolve-incident', params) do
+      service_instance.test_action('resolve', params) do
         expect_info message: 'Resolving the incident'
         expect_return
       end
