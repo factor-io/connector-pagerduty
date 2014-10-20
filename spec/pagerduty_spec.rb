@@ -4,7 +4,7 @@ describe 'PagerDuty' do
   describe 'incident' do
     it 'can generate an incident' do
 
-      service_key = ENV['PAGERDUTY_SERVICE_KEY']
+      service_key = @service_key
       description = 'CRITICAL'
       incident_key = '502'
       client = 'The servers are overloaded.'
@@ -21,8 +21,25 @@ describe 'PagerDuty' do
       }
 
       service_instance.test_action('incident', params) do
-        expect_info message: 'Beginning authentication'
         expect_info message: 'Generating a new incident'
+        expect_return
+      end
+    end
+
+    it 'can find an incident' do
+
+      service_key = @service_key
+      incident_key = @incident.incident_key
+
+      service_instance = service_instance('pagerduty')
+
+      params = {
+        'service_key' => service_key,
+        'incident_key' => incident_key
+      }
+
+      service_instance.test_action('retrieve-incident', params) do
+        expect_info message: 'Retrieving the incident information'
         expect_return
       end
     end
