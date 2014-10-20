@@ -55,11 +55,30 @@ Factor::Connector.service 'pagerduty' do
     fail 'A service key must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
-    info 'Retrieving the incident information'
+    info 'Acknowleding the incident'
     begin
       service = Pagerduty.new(service_key)
       incident = service.get_incident(incident_key)
       response = incident.acknowledge
+    rescue
+      fail 'Failed to find the incident'
+    end
+    action_callback response
+  end
+
+  action 'resolve-incident' do |params|
+
+    service_key = params['service_key']
+    incident_key = params['incident_key']
+
+    fail 'A service key must be provided' unless service_key
+    fail 'An incident key is required' unless incident_key
+
+    info 'Resolving the incident'
+    begin
+      service = Pagerduty.new(service_key)
+      incident = service.get_incident(incident_key)
+      response = incident.resolve
     rescue
       fail 'Failed to find the incident'
     end

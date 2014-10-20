@@ -57,7 +57,25 @@ describe 'PagerDuty' do
       }
 
       service_instance.test_action('acknowledge-incident', params) do
-        expect_info message: 'Retrieving the incident information'
+        expect_info message: 'Acknowleding the incident'
+        expect_return
+      end
+    end
+
+    it 'can resolve an incident' do
+
+      service_key = @service_key
+      incident_key = @incident.incident_key
+
+      service_instance = service_instance('pagerduty')
+
+      params = {
+        'service_key' => service_key,
+        'incident_key' => incident_key
+      }
+
+      service_instance.test_action('resolve-incident', params) do
+        expect_info message: 'Resolving the incident'
         expect_return
       end
     end
