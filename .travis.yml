@@ -1,3 +1,5 @@
 env:
   global:
-    secure: C6o1eRkaNV/C9NuWnkmt0AVGtbI9Ygur6TpwBBvW/F1GJiuKXmlzFTxqORNvuLJuCqRMHjzf8ohCL1tpuhqPG20hwQRn6y/SKzEcaIbnXdOjaQY6HoeiRu6jfOiHnp+heyzfB8Uka9TTu0VaNt/qVnjqh812HXTkqMfsX2BsYiA=
+  - secure: C6o1eRkaNV/C9NuWnkmt0AVGtbI9Ygur6TpwBBvW/F1GJiuKXmlzFTxqORNvuLJuCqRMHjzf8ohCL1tpuhqPG20hwQRn6y/SKzEcaIbnXdOjaQY6HoeiRu6jfOiHnp+heyzfB8Uka9TTu0VaNt/qVnjqh812HXTkqMfsX2BsYiA=
+  - secure: rKNfmhLdzQ8wzp6S1d71Gzto//OWsb+IdkPMhfXX6tvbPuGecHbrNDttnMFaq9BSWwaSRdvsRUTpGrgPxqZ4PpQcn7uKVVB/rSHEKh3YqcN2SJCh/I+bao0wP3iTqE+eJHKjgeCXa6/0ByRGzg3NGzdvHAYhIE3rb1apu5io31o=
+  - secure: D8xkbPQEVJ+4oxZMxVatXM54r1lGkQyd/KMEWKE/HBAhhKAFKgcSz800qyqVJ1zKaNvuKnsbF7DGaACLw1V9hNVQEBxF1+VaKKRYLWNLSruWfA8gV3Ib7HpMm5zGkRIX3x9cwYZFaEdbMwefPx/qlnd6xBcECAnBJTib2cAfJuA=
