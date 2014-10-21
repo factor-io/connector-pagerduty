@@ -1,5 +1,6 @@
 require 'factor-connector-api'
 require 'pagerduty'
+require 'httparty'
 
 Factor::Connector.service 'pagerduty' do
   action 'create' do |params|
@@ -11,7 +12,7 @@ Factor::Connector.service 'pagerduty' do
     client_url = params['client_url']
 
     fail 'A description is required' unless description
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
 
     content = {
       incident_key: incident_key,
@@ -34,7 +35,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Retrieving the incident information'
@@ -52,7 +53,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Acknowleding the incident'
@@ -71,7 +72,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Resolving the incident'
@@ -83,5 +84,37 @@ Factor::Connector.service 'pagerduty' do
       fail 'Failed to find the incident'
     end
     action_callback response
+  end
+
+  action 'list' do |params|
+
+    subdomain = params['subdomain']
+    access_key = params['access_key']
+
+    fail 'A subdomain must be provided' unless subdomain
+    fail 'An Access Key (access_key) is required' unless access_key
+
+    info 'Loading incidents'
+    begin
+      uri = "https://#{subdomain}.pagerduty.com/api/v1/incidents"
+      access_string = "Token token=#{access_key}"
+      response = HTTParty.get(
+        uri,
+        headers: {
+          'Content-Type' => 'application/json', 'Authorization' => access_string
+        }
+      )
+    rescue
+      fail 'Failed to load incidents'
+    end
+
+    info 'Parsing the response'
+    begin
+      incident_list = JSON.parse(response.body)
+    rescue
+      fail 'Failed to parse the response from the PagerDuty API'
+    end
+
+    action_callback incident_list
   end
 end

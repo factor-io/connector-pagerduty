@@ -4,7 +4,6 @@ describe 'PagerDuty' do
   describe 'incident' do
     it 'can generate an incident' do
 
-      service_key = @service_key
       description = 'CRITICAL'
       incident_key = '502'
       client = 'The servers are overloaded.'
@@ -13,7 +12,7 @@ describe 'PagerDuty' do
       service_instance = service_instance('pagerduty')
 
       params = {
-        'service_key' => service_key,
+        'service_key' => @service_key,
         'description' => description,
         'incident_key' => incident_key,
         'client' => client,
@@ -28,14 +27,11 @@ describe 'PagerDuty' do
 
     it 'can find an incident' do
 
-      service_key = @service_key
-      incident_key = @incident.incident_key
-
       service_instance = service_instance('pagerduty')
 
       params = {
-        'service_key' => service_key,
-        'incident_key' => incident_key
+        'service_key' => @service_key,
+        'incident_key' => @incident.incident_key
       }
 
       service_instance.test_action('retrieve', params) do
@@ -46,14 +42,11 @@ describe 'PagerDuty' do
 
     it 'can acknowledge an incident' do
 
-      service_key = @service_key
-      incident_key = @incident.incident_key
-
       service_instance = service_instance('pagerduty')
 
       params = {
-        'service_key' => service_key,
-        'incident_key' => incident_key
+        'service_key' => @service_key,
+        'incident_key' => @incident.incident_key
       }
 
       service_instance.test_action('acknowledge', params) do
@@ -64,18 +57,32 @@ describe 'PagerDuty' do
 
     it 'can resolve an incident' do
 
-      service_key = @service_key
-      incident_key = @incident.incident_key
 
       service_instance = service_instance('pagerduty')
 
       params = {
-        'service_key' => service_key,
-        'incident_key' => incident_key
+        'service_key' => @service_key,
+        'incident_key' => @incident.incident_key
       }
 
       service_instance.test_action('resolve', params) do
         expect_info message: 'Resolving the incident'
+        expect_return
+      end
+    end
+
+    it 'can listen for incidents' do
+
+      service_instance = service_instance('pagerduty')
+
+      params = {
+        'subdomain' => @subdomain,
+        'access_key' => @access_key
+      }
+
+      service_instance.test_action('list', params) do
+        expect_info message: 'Loading incidents'
+        expect_info message: 'Parsing the response'
         expect_return
       end
     end
