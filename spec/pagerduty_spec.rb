@@ -92,8 +92,9 @@ describe 'PagerDuty' do
         'access_key' => access_key
       }
 
-      service_instance.test_action('listen', params) do
+      service_instance.test_action('list', params) do
         expect_info message: 'Loading incidents'
+        expect_info message: 'Parsing the response'
         expect_return
       end
     end

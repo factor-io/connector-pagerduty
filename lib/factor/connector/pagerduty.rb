@@ -86,7 +86,7 @@ Factor::Connector.service 'pagerduty' do
     action_callback response
   end
 
-  action 'listen' do |params|
+  action 'list' do |params|
 
     subdomain = params['subdomain']
     access_key = params['access_key']
@@ -101,13 +101,20 @@ Factor::Connector.service 'pagerduty' do
       response = HTTParty.get(
         uri,
         headers: {
-          'Content-Type' => 'application/json', 'Aurthorization' => access_string
+          'Content-Type' => 'application/json', 'Authorization' => access_string
         }
       )
     rescue
       fail 'Failed to load incidents'
     end
 
-    action_callback response.body
+    info 'Parsing the response'
+    begin
+      incident_list = JSON.parse(response.body)
+    rescue
+      fail 'Failed to parse the response from the PagerDuty API'
+    end
+
+    action_callback incident_list
   end
 end
