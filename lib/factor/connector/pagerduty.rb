@@ -1,5 +1,6 @@
 require 'factor-connector-api'
 require 'pagerduty'
+require 'httparty'
 
 Factor::Connector.service 'pagerduty' do
   action 'create' do |params|
@@ -84,4 +85,45 @@ Factor::Connector.service 'pagerduty' do
     end
     action_callback response
   end
+
+  action 'listen' do |params|
+
+    subdomain = params['subdomain']
+    access_key = params['access_key']
+
+    fail 'A subdomain must be provided' unless subdomain
+    fail 'An API token is required' unless access_key
+
+    info 'Loading incidents'
+    begin
+      uri = "https://#{subdomain}.pagerduty.com/api/v1/incidents"
+      access_string = "Token token=#{access_key}"
+      response = HTTParty.get(
+        uri,
+        headers: {
+          'Content-Type' => 'application/json', 'Authorization' => access_string
+        }
+      )
+    rescue
+      fail 'Failed to load incidents'
+    end
+
+    action_callback response.body
+  end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

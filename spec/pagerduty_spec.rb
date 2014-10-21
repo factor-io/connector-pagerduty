@@ -79,5 +79,23 @@ describe 'PagerDuty' do
         expect_return
       end
     end
+
+    it 'can listen for incidents' do
+
+      subdomain = @subdomain
+      access_key = @access_key
+
+      service_instance = service_instance('pagerduty')
+
+      params = {
+        'subdomain' => subdomain,
+        'access_key' => access_key
+      }
+
+      service_instance.test_action('listen', params) do
+        expect_info message: 'Loading incidents'
+        expect_return
+      end
+    end
   end
 end

@@ -17,8 +17,12 @@ GEM
     factor-connector-api (0.0.13)
       celluloid (~> 0.16.0)
     hitimes (1.2.2)
+    httparty (0.13.1)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
     json (1.8.1)
     multi_json (1.10.1)
+    multi_xml (0.5.5)
     pagerduty (2.0.0)
       json (>= 1.7.7)
     predicated (0.2.6)
@@ -61,6 +65,7 @@ PLATFORMS
 DEPENDENCIES
   codeclimate-test-reporter (~> 0.4.1)
   factor-connector-pagerduty!
+  httparty (~> 0.13.1)
   rake (~> 10.3.2)
   rspec (~> 3.1.0)
   wrong (~> 0.7.1)

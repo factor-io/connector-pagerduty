@@ -13,6 +13,8 @@ RSpec.configure do |c|
 
   c.before do
     @service_key = ENV['PAGERDUTY_SERVICE_KEY']
+    @subdomain = ENV['PAGERDUTY_SUBDOMAIN']
+    @access_key = ENV['PAGERDUTY_ACCESS_KEY']
     @service = Pagerduty.new(@service_key)
     @incident = @service.trigger('Test', incident_key: '101')
   end
