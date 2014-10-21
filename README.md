@@ -10,3 +10,7 @@ This gem provides PagerDuty actions through the your Factor.io workflow. It was 
 As an administrative user of [PagerDuty](http://www.pagerduty.com/), you can access your service key by replacing your information in the link below.
 
 `https://<your_subdomain>.pagerduty.com/services`
+
+You access key can be found in the same way.
+
+`https://<your_subdomain>.pagerduty.com/api_keys`
