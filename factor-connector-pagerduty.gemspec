@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'factor-connector-api', '~> 0.0.3'
   s.add_runtime_dependency 'pagerduty', '~> 2.0.0'
-  s.add_development_dependency 'httparty', '~> 0.13.1'
+  s.add_runtime_dependency 'httparty', '~> 0.13.1'
 
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4.1'
   s.add_development_dependency 'rspec', '~> 3.1.0'
