@@ -101,7 +101,7 @@ Factor::Connector.service 'pagerduty' do
       response = HTTParty.get(
         uri,
         headers: {
-          'Content-Type' => 'application/json', 'Authorization' => access_string
+          'Content-Type' => 'application/json', 'Aurthorization' => access_string
         }
       )
     rescue
@@ -111,19 +111,3 @@ Factor::Connector.service 'pagerduty' do
     action_callback response.body
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

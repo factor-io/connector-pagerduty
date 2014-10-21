@@ -11,6 +11,6 @@ As an administrative user of [PagerDuty](http://www.pagerduty.com/), you can acc
 
 `https://<your_subdomain>.pagerduty.com/services`
 
-You access key can be found in the same way.
+Your access key can be found in the same way.
 
 `https://<your_subdomain>.pagerduty.com/api_keys`
