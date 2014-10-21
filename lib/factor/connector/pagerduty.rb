@@ -12,7 +12,7 @@ Factor::Connector.service 'pagerduty' do
     client_url = params['client_url']
 
     fail 'A description is required' unless description
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
 
     content = {
       incident_key: incident_key,
@@ -35,7 +35,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Retrieving the incident information'
@@ -53,7 +53,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Acknowleding the incident'
@@ -72,7 +72,7 @@ Factor::Connector.service 'pagerduty' do
     service_key = params['service_key']
     incident_key = params['incident_key']
 
-    fail 'A service key must be provided' unless service_key
+    fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
     info 'Resolving the incident'
@@ -92,7 +92,7 @@ Factor::Connector.service 'pagerduty' do
     access_key = params['access_key']
 
     fail 'A subdomain must be provided' unless subdomain
-    fail 'An API token is required' unless access_key
+    fail 'An Access Key (access_key) is required' unless access_key
 
     info 'Loading incidents'
     begin
