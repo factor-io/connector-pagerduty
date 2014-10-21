@@ -22,13 +22,13 @@ Your access key can be found in the same way.
 ##Usage
 
 ####Incident Actions
-• create
-• retrieve
-• acknowledge
-• resolve
+• create<br />
+• retrieve<br />
+• acknowledge<br />
+• resolve<br />
 
 ####Listener
-
+The listener can be configured to load new incident reports as often as you like.
 
 ##Testing
 
