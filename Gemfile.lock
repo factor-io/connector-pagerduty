@@ -3,6 +3,7 @@ PATH
   specs:
     factor-connector-pagerduty (0.0.1)
       factor-connector-api (~> 0.0.3)
+      httparty (~> 0.13.1)
       pagerduty (~> 2.0.0)
 
 GEM
@@ -65,7 +66,6 @@ PLATFORMS
 DEPENDENCIES
   codeclimate-test-reporter (~> 0.4.1)
   factor-connector-pagerduty!
-  httparty (~> 0.13.1)
   rake (~> 10.3.2)
   rspec (~> 3.1.0)
   wrong (~> 0.7.1)
