@@ -7,7 +7,7 @@
 PagerDuty Connector for Factor.io
 ======================
 
-This gem provides PagerDuty actions through the your Factor.io workflow. It was built primarily with the [factor-connector-api](https://github.com/factor-io/connector-api) and [pagerduty](https://github.com/envato/pagerduty) gems.
+This gem provides PagerDuty actions through your Factor.io workflow. It was built primarily with the [factor-connector-api](https://github.com/factor-io/connector-api) and [pagerduty](https://github.com/envato/pagerduty) gems.
 
 #Authentication
 

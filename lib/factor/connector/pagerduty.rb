@@ -56,7 +56,7 @@ Factor::Connector.service 'pagerduty' do
     fail 'A Service Key (service_key) must be provided' unless service_key
     fail 'An incident key is required' unless incident_key
 
-    info 'Acknowleding the incident'
+    info 'Acknowledging the incident'
     begin
       service = Pagerduty.new(service_key)
       incident = service.get_incident(incident_key)

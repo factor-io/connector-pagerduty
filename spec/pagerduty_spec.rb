@@ -50,7 +50,7 @@ describe 'PagerDuty' do
       }
 
       service_instance.test_action('acknowledge', params) do
-        expect_info message: 'Acknowleding the incident'
+        expect_info message: 'Acknowledging the incident'
         expect_return
       end
     end
