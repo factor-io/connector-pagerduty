@@ -1,4 +1,3 @@
-[![Code Climate](https://codeclimate.com/github/factor-io/connector-pagerduty/badges/gpa.svg)](https://codeclimate.com/github/factor-io/connector-pagerduty)
 [![Test Coverage](https://codeclimate.com/github/factor-io/connector-pagerduty/badges/coverage.svg)](https://codeclimate.com/github/factor-io/connector-pagerduty)
 [![Dependency Status](https://gemnasium.com/factor-io/connector-pagerduty.svg)](https://gemnasium.com/factor-io/connector-pagerduty)
 [![Build Status](https://travis-ci.org/factor-io/connector-pagerduty.svg?branch=master)](https://travis-ci.org/factor-io/connector-pagerduty)
