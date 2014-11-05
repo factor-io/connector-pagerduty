@@ -21,5 +21,7 @@ RSpec.configure do |c|
 
   c.after do
     @incident.resolve
+    incident = @service.get_incident('502')
+    incident.resolve
   end
 end
