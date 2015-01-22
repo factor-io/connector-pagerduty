@@ -4,3 +4,10 @@ env:
   - secure: nO831BrVCvRB0r61/3FhP5M45H28fhTEBhFYvk53syZurwD+QADmeaP0daqiqVTWzT/w+A4a3MfBlaFSUx1jM1JqQ6WOJ5j6M2P47L0aGTQAJGRzquXdZ8gK6GpteuXD70p75o8kVCWMLh+DPQ4uyIj6lP93khuqeGphZ+SmtV0=
   - secure: N6DL+HbViU5f4oNcAtuaXudJKrXtkPIK+duhqhTs9gpY9vGrKdu96mR2hv+UnpAzhhQ7cmUZHn5PHwwnbkCY+XRgv74nFigU56tIlKsupliEArkMne4oWO4cdKa623534cIS9PsfPIlYvmzzocFFZkAcVooDnWoYPyRoSemubeo=
   - secure: pYOlOxBGX9MHPGF3xF7UyOIIMyOdalYMjBZ1kHq/DBbI1X9sgERy58wvEq6DuUCUO/es03GbJu/sDB0qo6KFAJsyYpKt1N2ob6i19upNHJVNTJQmzYFsdRM1/2jYXDv6x02Y/U/F32Rdbb0rsbPdw8RkA4FdidSnOzvnLtp/OPc=
+deploy:
+  provider: rubygems
+  gem: factor-connector-pagerduty
+  api_key:
+    secure: T24epDVon+Cx5yVd02i1ToHjr5pWnMjTCyudzlAXLBF9Rtsta6N6O41RNuHk94KXzoyfS4r8snblzENqR4OFYGE7VkDR1S14nE1rJWM7O9H3ExJh+mPrGtZNQ2Iaxl/a6wGNUb8TQYQEV8v+Qdt7FyFvtESZxHbSClJ7ChOZ1v0=
+  on:
+    tags: true
